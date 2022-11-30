@@ -1,5 +1,7 @@
 module Day1
     ( run
+    , task1
+    , task2
     ) where
 import           Common                         ( inputFileName
                                                 , runTasksLines

@@ -1,5 +1,7 @@
 module Template
     ( run
+    , task1
+    , task2
     ) where
 import           Common                         ( inputFileName
                                                 , runTasksLines
