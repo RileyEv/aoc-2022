@@ -4,6 +4,7 @@ module Main
 
 import           Common                         ( Task(..) )
 import qualified Day1                           ( run )
+import qualified Day2                           ( run )
 import           System.Environment             ( getArgs )
 import           Text.Read                      ( readMaybe )
 
@@ -20,7 +21,7 @@ main = do
 
     let dayTask = case day of
             Just 1  -> Day1.run
-            Just 2  -> error "Day not setup yet"
+            Just 2  -> Day2.run
             Just 3  -> error "Day not setup yet"
             Just 4  -> error "Day not setup yet"
             Just 5  -> error "Day not setup yet"
