@@ -23,6 +23,9 @@ dependencies:
 - base >= 4.7 && < 5
 - template-haskell
 - extra
+- containers
+- split
+- parsec
 
 default-extensions:
 - TemplateHaskell

@@ -28,6 +28,8 @@ library
       Common
       Day1
       Day2
+      Day3
+      Day4
       Template
   other-modules:
       Paths_aoc2022
@@ -38,7 +40,10 @@ library
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints
   build-depends:
       base >=4.7 && <5
+    , containers
     , extra
+    , parsec
+    , split
     , template-haskell
   default-language: Haskell2010
 
@@ -54,7 +59,10 @@ executable aoc2022-exe
   build-depends:
       aoc2022
     , base >=4.7 && <5
+    , containers
     , extra
+    , parsec
+    , split
     , template-haskell
   default-language: Haskell2010
 
@@ -64,6 +72,8 @@ test-suite aoc2022-test
   other-modules:
       Day1Tests
       Day2Tests
+      Day3Tests
+      Day4Tests
       TemplateTests
       Paths_aoc2022
   hs-source-dirs:
@@ -75,7 +85,10 @@ test-suite aoc2022-test
       HUnit
     , aoc2022
     , base >=4.7 && <5
+    , containers
     , extra
+    , parsec
+    , split
     , tasty
     , tasty-hunit
     , template-haskell
