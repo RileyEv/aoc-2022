@@ -88,6 +88,8 @@ main = defaultMain
             $ nfIO (runTask "inputs/day5.txt" Day5.reader Day5.task1)
         , bench "task2"
             $ nfIO (runTask "inputs/day5.txt" Day5.reader Day5.task2)
+        , bench "task2 a bit bigger input"
+            $ nfIO (runTask "inputs/day5-large1-shorter.txt" Day5.reader Day5.task2)
         ]
     , bgroup
         "day6"
