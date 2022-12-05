@@ -1,9 +1,11 @@
 {-# LANGUAGE LambdaCase #-}
+{-# LANGUAGE Strict #-}
+
 module Day5
     ( run
     , task1
     , task2
-    , Stack(..)
+    , reader
     , Move(..)
     , Mission(..)
     ) where
@@ -12,62 +14,100 @@ import           Common                         ( inputFileName
                                                 )
 
 import           Control.Applicative            ( Alternative(some) )
-import           Data.List                      ( transpose )
+import           Data.List                      ( foldl'
+                                                , transpose
+                                                )
 import           Data.Maybe                     ( catMaybes )
 import           Data.Vector                    ( (!)
+                                                , (++)
                                                 , (//)
                                                 , Vector
                                                 , fromList
+                                                , head
                                                 , map
+                                                , reverse
+                                                , splitAt
                                                 , toList
                                                 )
-import           Text.Parsec                    ( (<|>)
+import           Data.Vector.Unboxed            ( (!)
+                                                , (++)
+                                                , (//)
+                                                , Vector
+                                                , fromList
+                                                , head
+                                                , map
+                                                , reverse
+                                                , splitAt
+                                                , toList
+                                                )
+import           Data.Void                      ( Void )
+import           Text.Megaparsec                ( (<|>)
+                                                , Parsec
                                                 , between
-                                                , char
-                                                , digit
                                                 , many
-                                                , newline
                                                 , oneOf
                                                 , optional
                                                 , parse
-                                                , string
+                                                , sepBy1
                                                 , try
                                                 )
+import           Text.Megaparsec.Char           ( char
+                                                , digitChar
+                                                , newline
+                                                , string
+                                                )
 
-newtype Stack = Stack Int deriving (Eq, Ord, Show)
 
-data Move = Move Int Int Int
+data Move = Move !Int !Int !Int
     deriving Show
 
-data Mission = Mission (Vector [Char]) [Move]
+data Mission = Mission !(Data.Vector.Vector (Data.Vector.Unboxed.Vector Char))
+                       ![Move]
     deriving Show
 
 
-applyMove :: Bool -> Vector [Char] -> Move -> Vector [Char]
-applyMove flip stacks move@(Move n from to) =
+applyMove
+    :: (Data.Vector.Unboxed.Vector Char -> Data.Vector.Unboxed.Vector Char)
+    -> Data.Vector.Vector (Data.Vector.Unboxed.Vector Char)
+    -> Move
+    -> Data.Vector.Vector (Data.Vector.Unboxed.Vector Char)
+applyMove f stacks move@(Move n from to) =
     let
-        fromStack               = stacks ! (from - 1)
-        toStack                 = stacks ! (to - 1)
-        (takenItems, leftItems) = Prelude.splitAt n fromStack
+        fromStack = {-# SCC "applyMove.fromStack" #-} stacks Data.Vector.! (from - 1)
+        toStack   = {-# SCC "applyMove.toStack" #-}stacks Data.Vector.! (to - 1)
+        (takenItems, leftItems) =
+            {-# SCC "applyMove.splitAt" #-} Data.Vector.Unboxed.splitAt n fromStack
         newToStack =
-            (if flip then Prelude.reverse else id) takenItems Prelude.++ toStack
+            {-# SCC "applyMove.append" #-}f takenItems Data.Vector.Unboxed.++ toStack
     in
-        stacks // [(from - 1, leftItems), (to - 1, newToStack)]
+        {-# SCC "applyMove.insert" #-} stacks Data.Vector.// [(from - 1, leftItems), (to - 1, newToStack)]
 
 
 task1 :: Mission -> IO (Maybe String)
 task1 (Mission stacks moves) = do
-    let completeState = Prelude.foldl (applyMove True) stacks moves
-    return (Just (toList (Data.Vector.map Prelude.head completeState)))
+    let completeState =
+            foldl' (applyMove Data.Vector.Unboxed.reverse) stacks moves
+    return
+        (Just
+            (Data.Vector.toList
+                (Data.Vector.map Data.Vector.Unboxed.head completeState)
+            )
+        )
 
 task2 :: Mission -> IO (Maybe String)
 task2 (Mission stacks moves) = do
-    let completeState = Prelude.foldl (applyMove False) stacks moves
-    return (Just (toList (Data.Vector.map Prelude.head completeState)))
+    let completeState = foldl' (applyMove id) stacks moves
+    return
+        (Just
+            (Data.Vector.toList
+                (Data.Vector.map Data.Vector.Unboxed.head completeState)
+            )
+        )
 
 -- Does not need to be read, this is just some way to manipulate each line of the input file
 run = runTasks (inputFileName 'run) reader task1 task2
 
+type Parser = Parsec Void String
 
 reader :: String -> Mission
 reader str = case parse mission "inputs/day5.txt" str of
@@ -92,7 +132,13 @@ reader str = case parse mission "inputs/day5.txt" str of
             <*> number
             <*  string " to "
             <*> number
-    number = read <$> many digit
-    buildStacks :: [[Maybe Char]] -> [Int] -> Vector [Char]
+    number :: Parser Int
+    number = read <$> many digitChar
+    buildStacks
+        :: [[Maybe Char]]
+        -> [Int]
+        -> Data.Vector.Vector (Data.Vector.Unboxed.Vector Char)
     buildStacks items _ = Data.Vector.fromList
-        (Prelude.map Data.Maybe.catMaybes (transpose items))
+        (Prelude.map (Data.Vector.Unboxed.fromList . Data.Maybe.catMaybes)
+                     (transpose items)
+        )

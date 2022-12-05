@@ -2,6 +2,7 @@ module Day1
     ( run
     , task1
     , task2
+    , reader
     ) where
 import           Common                         ( inputFileName
                                                 , runTasksLines
@@ -38,4 +39,7 @@ task2 messyInputs = do
     return (Just (sum (take 3 values)))
 
 -- Does not need to be read, this is just some way to manipulate each line of the input file
-run = runTasksLines (inputFileName 'run) readMaybe task1 task2
+run = runTasksLines (inputFileName 'run) reader task1 task2
+
+reader :: String -> Maybe Int
+reader = readMaybe

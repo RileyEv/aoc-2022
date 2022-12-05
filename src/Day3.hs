@@ -2,6 +2,7 @@ module Day3
     ( run
     , task1
     , task2
+    , reader
     ) where
 import           Common                         ( inputFileName
                                                 , runTasksLines
@@ -60,4 +61,7 @@ task2 dirtyBags = do
     return $ Just (sum priorities)
 
 -- Does not need to be read, this is just some way to manipulate each line of the input file
-run = runTasksLines (inputFileName 'run) id task1 task2
+run = runTasksLines (inputFileName 'run) reader task1 task2
+
+reader :: String -> String
+reader = id

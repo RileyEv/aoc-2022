@@ -59,12 +59,15 @@ runTasks fname mapFunc t1 t2 taskOption = case taskOption of
  where
   input' = mapFunc <$> inputFile fname
   task1  = do
-    print "hi"
-    input    <- input'
+    print "starting reading input"
+    input <- input'
+    print "read input"
     task1Res <- t1 input
     print ("Task1: " ++ show task1Res)
   task2 = do
-    input    <- input'
+    print "starting reading input"
+    input <- input'
+    print "read input"
     task2Res <- t2 input
     print ("Task2: " ++ show task2Res)
 

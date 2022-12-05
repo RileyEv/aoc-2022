@@ -2,6 +2,7 @@ module Template
     ( run
     , task1
     , task2
+    , reader
     ) where
 import           Common                         ( inputFileName
                                                 , runTasksLines
@@ -14,4 +15,7 @@ task2 :: [Int] -> IO (Maybe Int)
 task2 _ = return Nothing
 
 -- Does not need to be read, this is just some way to manipulate each line of the input file
-run = runTasksLines (inputFileName 'run) read task1 task2
+run = runTasksLines (inputFileName 'run) reader task1 task2
+
+reader :: String -> Int
+reader = read

@@ -5,6 +5,7 @@ module Day4
     , task1
     , task2
     , task3
+    , reader
     , ElfPair(..)
     , ElfWork(..)
     , pairIntersections

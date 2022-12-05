@@ -3,6 +3,7 @@ module Day5Tests
   ) where
 
 import           Data.Vector                       ( fromList )
+import Data.Vector.Unboxed (fromList)
 import qualified Day5                          as Day
 import           Test.Tasty                     ( TestTree
                                                 , testGroup
@@ -20,8 +21,8 @@ task1tests = testGroup
   [ testCase "example1" $ do
       res <- Day.task1
         (Day.Mission
-          (fromList
-            ["NZ", "DCM", "P"]
+          (Data.Vector.fromList
+            (map Data.Vector.Unboxed.fromList ["NZ", "DCM", "P"])
           )
           [ Day.Move 1 2 1
           , Day.Move 3 1 3
@@ -38,8 +39,8 @@ task2tests = testGroup
   [ testCase "example1" $ do
       res <- Day.task2
         (Day.Mission
-          (fromList
-            ["NZ", "DCM", "P"]
+          (Data.Vector.fromList
+            (map Data.Vector.Unboxed.fromList ["NZ", "DCM", "P"])
           )
           [ Day.Move 1 2 1
           , Day.Move 3 1 3

@@ -2,6 +2,7 @@ module Day2
     ( run
     , task1
     , task2
+    , reader
     , Input1(..)
     , Input2(..)
     ) where
