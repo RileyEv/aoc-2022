@@ -13,15 +13,14 @@ import           Common                         ( inputFileName
 
 import           Control.Applicative            ( Alternative(some) )
 import           Data.List                      ( transpose )
-import           Data.Map                       ( Map
-                                                , empty
-                                                , fromList
-                                                , insert
-                                                , toAscList
-                                                , update
-                                                )
 import           Data.Maybe                     ( catMaybes )
-import           Data.Vector
+import           Data.Vector                    ( (!)
+                                                , (//)
+                                                , Vector
+                                                , fromList
+                                                , map
+                                                , toList
+                                                )
 import           Text.Parsec                    ( (<|>)
                                                 , between
                                                 , char
@@ -60,10 +59,6 @@ task1 :: Mission -> IO (Maybe String)
 task1 (Mission stacks moves) = do
     let completeState = Prelude.foldl (applyMove True) stacks moves
     return (Just (toList (Data.Vector.map Prelude.head completeState)))
-
-spaceHead :: String -> Char
-spaceHead []      = ' '
-spaceHead (x : _) = x
 
 task2 :: Mission -> IO (Maybe String)
 task2 (Mission stacks moves) = do
