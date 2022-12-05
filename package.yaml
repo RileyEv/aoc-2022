@@ -26,6 +26,7 @@ dependencies:
 - containers
 - split
 - parsec
+- vector
 
 default-extensions:
 - TemplateHaskell
@@ -68,3 +69,5 @@ tests:
     - tasty
     - tasty-hunit
     - HUnit
+    - containers
+    - vector

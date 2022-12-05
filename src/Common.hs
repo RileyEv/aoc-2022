@@ -8,13 +8,17 @@ import           Language.Haskell.TH            ( Name
 
 data Task = Task1 | Task2 | All
 
-inputFile :: FilePath -> IO [String]
-inputFile fname = do
+
+inputFile :: FilePath -> IO String
+inputFile = readFile
+
+inputFileLines :: FilePath -> IO [String]
+inputFileLines fname = do
   f <- readFile fname
   return (lines f)
 
 inputFileLinesMap :: (String -> b) -> FilePath -> IO [b]
-inputFileLinesMap mapFunc = mapM (return . mapFunc) <=< inputFile
+inputFileLinesMap mapFunc = mapM (return . mapFunc) <=< inputFileLines
 
 
 runTasksLines
@@ -32,6 +36,30 @@ runTasksLines fname mapFunc t1 t2 taskOption = case taskOption of
  where
   input' = inputFileLinesMap mapFunc fname
   task1  = do
+    input    <- input'
+    task1Res <- t1 input
+    print ("Task1: " ++ show task1Res)
+  task2 = do
+    input    <- input'
+    task2Res <- t2 input
+    print ("Task2: " ++ show task2Res)
+
+runTasks
+  :: (Show b, Show c)
+  => FilePath
+  -> (String -> a)
+  -> (a -> IO (Maybe b))
+  -> (a -> IO (Maybe c))
+  -> Task
+  -> IO ()
+runTasks fname mapFunc t1 t2 taskOption = case taskOption of
+  Task1 -> task1
+  Task2 -> task2
+  All   -> task1 >> task2
+ where
+  input' = mapFunc <$> inputFile fname
+  task1  = do
+    print "hi"
     input    <- input'
     task1Res <- t1 input
     print ("Task1: " ++ show task1Res)

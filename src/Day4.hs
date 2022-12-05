@@ -14,7 +14,6 @@ module Day4
 import           Common                         ( inputFileName
                                                 , runTasksLines
                                                 )
-import           Data.Either                    ( partitionEithers )
 import           Data.List                      ( sortBy )
 import           Text.Parsec
 
