@@ -41,7 +41,8 @@ library
       TemplateHaskell
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints
   build-depends:
-      base >=4.7 && <5
+      Unique
+    , base >=4.7 && <5
     , containers
     , extra
     , megaparsec
@@ -61,7 +62,8 @@ executable aoc2022-exe
       TemplateHaskell
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N -O2
   build-depends:
-      aoc2022
+      Unique
+    , aoc2022
     , base >=4.7 && <5
     , containers
     , extra
@@ -91,6 +93,7 @@ test-suite aoc2022-test
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       HUnit
+    , Unique
     , aoc2022
     , base >=4.7 && <5
     , containers
@@ -115,7 +118,8 @@ benchmark aoc2022-bench
       TemplateHaskell
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -threaded -rtsopts -with-rtsopts=-N -O2
   build-depends:
-      aoc2022
+      Unique
+    , aoc2022
     , base >=4.7 && <5
     , containers
     , criterion
