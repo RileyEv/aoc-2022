@@ -29,6 +29,7 @@ dependencies:
 - vector
 - megaparsec
 - Unique
+- array
 
 default-extensions:
 - TemplateHaskell

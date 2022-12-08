@@ -10,6 +10,7 @@ import qualified Day4                           ( run )
 import qualified Day5                           ( run )
 import qualified Day6                           ( run )
 import qualified Day7                           ( run )
+import qualified Day8                           ( run )
 import           System.Environment             ( getArgs )
 import           Text.Read                      ( readMaybe )
 
@@ -32,7 +33,7 @@ main = do
             Just 5  -> Day5.run
             Just 6  -> Day6.run
             Just 7  -> Day7.run
-            Just 8  -> error "Day not setup yet"
+            Just 8  -> Day8.run
             Just 9  -> error "Day not setup yet"
             Just 10 -> error "Day not setup yet"
             Just 11 -> error "Day not setup yet"

@@ -26,6 +26,10 @@ import qualified Day7                           ( reader
                                                 , task1
                                                 , task2
                                                 )
+import qualified Day8                           ( reader
+                                                , task1
+                                                , task2
+                                                )
 import qualified Template                       ( reader
                                                 , task1
                                                 , task2
@@ -104,8 +108,15 @@ main = defaultMain
     , bgroup
         "day7"
         [ bench "task1"
-            $ nfIO (runTaskLines "inputs/day7.txt" Day7.reader Day7.task1)
+            $ nfIO (runTask "inputs/day7.txt" Day7.reader Day7.task1)
         , bench "task2"
-            $ nfIO (runTaskLines "inputs/day7.txt" Day7.reader Day7.task2)
+            $ nfIO (runTask "inputs/day7.txt" Day7.reader Day7.task2)
+        ]
+    , bgroup
+        "day8"
+        [ bench "task1"
+            $ nfIO (runTaskLines "inputs/day7.txt" Day8.reader Day8.task1)
+        , bench "task2"
+            $ nfIO (runTaskLines "inputs/day7.txt" Day8.reader Day8.task2)
         ]
     ]
