@@ -22,6 +22,10 @@ import qualified Day6                           ( reader
                                                 , task1
                                                 , task2
                                                 )
+import qualified Day7                           ( reader
+                                                , task1
+                                                , task2
+                                                )
 import qualified Template                       ( reader
                                                 , task1
                                                 , task2
@@ -40,8 +44,7 @@ runTaskLines
     -> (String -> a)
     -> ([a] -> IO (Maybe b))
     -> IO (Maybe b)
-runTaskLines fname mapFunc t =
-    inputFileLinesMap mapFunc fname >>= t
+runTaskLines fname mapFunc t = inputFileLinesMap mapFunc fname >>= t
 
 runTask
     :: (Show b)
@@ -88,8 +91,8 @@ main = defaultMain
             $ nfIO (runTask "inputs/day5.txt" Day5.reader Day5.task1)
         , bench "task2"
             $ nfIO (runTask "inputs/day5.txt" Day5.reader Day5.task2)
-        , bench "task2 a bit bigger input"
-            $ nfIO (runTask "inputs/day5-large1-shorter.txt" Day5.reader Day5.task2)
+        , bench "task2 a bit bigger input" $ nfIO
+            (runTask "inputs/day5-large1-shorter.txt" Day5.reader Day5.task2)
         ]
     , bgroup
         "day6"
@@ -97,5 +100,12 @@ main = defaultMain
             $ nfIO (runTask "inputs/day6.txt" Day6.reader Day6.task1)
         , bench "task2"
             $ nfIO (runTask "inputs/day6.txt" Day6.reader Day6.task2)
+        ]
+    , bgroup
+        "day7"
+        [ bench "task1"
+            $ nfIO (runTaskLines "inputs/day7.txt" Day7.reader Day7.task1)
+        , bench "task2"
+            $ nfIO (runTaskLines "inputs/day7.txt" Day7.reader Day7.task2)
         ]
     ]
