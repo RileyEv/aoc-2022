@@ -11,6 +11,7 @@ import qualified Day5Tests
 import qualified Day6Tests
 import qualified Day7Tests
 import qualified Day8Tests
+import qualified Day9Tests
 import qualified TemplateTests
 
 
@@ -29,4 +30,5 @@ tests = testGroup
       , Day6Tests.tests
       , Day7Tests.tests
       , Day8Tests.tests
+      , Day9Tests.tests
       ]
