@@ -11,20 +11,26 @@ import           Test.Tasty.HUnit               ( (@?=)
                                                 )
 
 tests :: TestTree
-tests = testGroup "day9 should" [task1tests, task2tests]
+tests = testGroup "day9 should" [task2tests]
 
 task1tests :: TestTree
 task1tests = testGroup
   "task1 should"
   [ testCase "example1" $ do
-      res <- Day.task1 []
-      res @?= Nothing
+      testInput <- lines <$> readFile "inputs/day9-test.txt"
+      res       <- Day.task1 (map Day.reader testInput)
+      res @?= Just 13
   ]
 
 task2tests :: TestTree
 task2tests = testGroup
   "task2 should"
-  [ testCase "example1" $ do
-      res <- Day.task2 []
-      res @?= Nothing
+  -- [ testCase "example1" $ do
+  --   testInput <- lines <$> readFile "inputs/day9-test.txt"
+  --   res       <- Day.task2 (map Day.reader testInput)
+  --   res @?= Just 1
+  [ testCase "example2" $ do
+      testInput <- lines <$> readFile "inputs/day9-test2.txt"
+      res       <- Day.task2 (map Day.reader testInput)
+      res @?= Just 36
   ]

@@ -3,6 +3,11 @@ import           Test.Tasty                     ( TestTree
                                                 , testGroup
                                                 )
 
+import qualified Day10Tests
+import qualified Day11Tests
+import qualified Day12Tests
+import qualified Day13Tests
+import qualified Day14Tests
 import qualified Day1Tests
 import qualified Day2Tests
 import qualified Day3Tests
@@ -31,4 +36,9 @@ tests = testGroup
       , Day7Tests.tests
       , Day8Tests.tests
       , Day9Tests.tests
+      , Day10Tests.tests
+      , Day11Tests.tests
+      , Day12Tests.tests
+      , Day13Tests.tests
+      , Day14Tests.tests
       ]

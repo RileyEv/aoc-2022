@@ -4,6 +4,11 @@ module Main
 
 import           Common                         ( Task(..) )
 import qualified Day1                           ( run )
+import qualified Day10                          ( run )
+import qualified Day11                          ( run )
+import qualified Day12                          ( run )
+import qualified Day13                          ( run )
+import qualified Day14                          ( run )
 import qualified Day2                           ( run )
 import qualified Day3                           ( run )
 import qualified Day4                           ( run )
@@ -36,11 +41,11 @@ main = do
             Just 7  -> Day7.run
             Just 8  -> Day8.run
             Just 9  -> Day9.run
-            Just 10 -> error "Day not setup yet"
-            Just 11 -> error "Day not setup yet"
-            Just 12 -> error "Day not setup yet"
-            Just 13 -> error "Day not setup yet"
-            Just 14 -> error "Day not setup yet"
+            Just 10 -> Day10.run
+            Just 11 -> Day11.run
+            Just 12 -> Day12.run
+            Just 13 -> Day13.run
+            Just 14 -> Day14.run
             Just 15 -> error "Day not setup yet"
             Just 16 -> error "Day not setup yet"
             Just 17 -> error "Day not setup yet"

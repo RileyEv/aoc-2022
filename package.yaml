@@ -44,9 +44,10 @@ ghc-options:
 - -Wmissing-home-modules
 - -Wpartial-fields
 - -Wredundant-constraints
-# - -fprof-auto
-# - -fprof-cafs
-# - -fforce-recomp
+- -O2
+- -fprof-auto
+- -fprof-cafs
+- -fforce-recomp
 
 library:
   source-dirs: src
@@ -60,9 +61,9 @@ executables:
     - -rtsopts
     - -with-rtsopts=-N
     - -O2
-    # - -fprof-auto
-    # - -fprof-cafs
-    # - -fforce-recomp
+    - -fprof-auto
+    - -fprof-cafs
+    - -fforce-recomp
     dependencies:
     - aoc2022
 
