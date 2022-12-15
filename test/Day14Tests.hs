@@ -3,6 +3,7 @@ module Day14Tests
   ) where
 
 import qualified Day14                         as Day
+-- import qualified Day142                        as Day2
 import           Test.Tasty                     ( TestTree
                                                 , testGroup
                                                 )
@@ -20,6 +21,10 @@ task1tests = testGroup
       input <- readFile "inputs/day14-test.txt"
       res   <- Day.task1 (Day.reader input)
       res @?= Just 24
+  -- , testCase "example1-2" $ do
+  --   input <- readFile "inputs/day14-test.txt"
+  --   res   <- Day2.task1 (Day.reader input)
+  --   res @?= Just 24
   ]
 
 task2tests :: TestTree
@@ -29,4 +34,8 @@ task2tests = testGroup
       input <- readFile "inputs/day14-test.txt"
       res   <- Day.task2 (Day.reader input)
       res @?= Just 93
+  -- , testCase "example1-2" $ do
+  --   input <- readFile "inputs/day14-test.txt"
+  --   res   <- Day2.task2 (Day.reader input)
+  --   res @?= Just 93
   ]
