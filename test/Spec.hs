@@ -8,7 +8,11 @@ import qualified Day11Tests
 import qualified Day12Tests
 import qualified Day13Tests
 import qualified Day14Tests
+import qualified Day15Tests
+import qualified Day18Tests
+import qualified Day19Tests
 import qualified Day1Tests
+import qualified Day20Tests
 import qualified Day2Tests
 import qualified Day3Tests
 import qualified Day4Tests
@@ -41,4 +45,8 @@ tests = testGroup
       , Day12Tests.tests
       , Day13Tests.tests
       , Day14Tests.tests
+      , Day15Tests.tests
+      , Day18Tests.tests
+      , Day19Tests.tests
+      , Day20Tests.tests
       ]

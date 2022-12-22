@@ -11,6 +11,13 @@ packages:
       size: 1366
   original:
     hackage: Unique-0.4.7.9
+- completed:
+    hackage: holmes-0.3.2.0@sha256:3d4aeb74177bafedc55a9c21be682ad45929490d1d809dec7fe248a503df0290,4597
+    pantry-tree:
+      sha256: 414f3416b14c2cd66141e755fa4d343c9ac154dc7713cf56bee09578019170cd
+      size: 3258
+  original:
+    hackage: holmes-0.3.2.0
 snapshots:
 - completed:
     sha256: 428ec8d5ce932190d3cbe266b9eb3c175cd81e984babf876b64019e2cbe4ea68

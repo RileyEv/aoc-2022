@@ -9,7 +9,10 @@ import qualified Day11                          ( run )
 import qualified Day12                          ( run )
 import qualified Day13                          ( run )
 import qualified Day14                          ( run )
+import qualified Day15                          ( run )
+import qualified Day19                          ( run )
 import qualified Day2                           ( run )
+import qualified Day20                          ( run )
 import qualified Day3                           ( run )
 import qualified Day4                           ( run )
 import qualified Day5                           ( run )
@@ -46,12 +49,12 @@ main = do
             Just 12 -> Day12.run
             Just 13 -> Day13.run
             Just 14 -> Day14.run
-            Just 15 -> error "Day not setup yet"
+            Just 15 -> Day15.run
             Just 16 -> error "Day not setup yet"
             Just 17 -> error "Day not setup yet"
             Just 18 -> error "Day not setup yet"
-            Just 19 -> error "Day not setup yet"
-            Just 20 -> error "Day not setup yet"
+            Just 19 -> Day19.run
+            Just 20 -> Day20.run
             Just 21 -> error "Day not setup yet"
             Just 22 -> error "Day not setup yet"
             Just 23 -> error "Day not setup yet"

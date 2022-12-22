@@ -30,9 +30,20 @@ dependencies:
 - megaparsec
 - Unique
 - array
+- holmes
+- ghc-typelits-natnormalise
+- text
+- hashable
+- unordered-containers
+- mtl
+- attoparsec
+- vector-algorithms
 
 default-extensions:
 - TemplateHaskell
+- GADTs
+- TypeFamilies
+- TypeOperators
 
 ghc-options:
 - -Wall
@@ -45,9 +56,9 @@ ghc-options:
 - -Wpartial-fields
 - -Wredundant-constraints
 - -O2
-- -fprof-auto
-- -fprof-cafs
-- -fforce-recomp
+# - -fprof-auto
+# - -fprof-cafs
+# - -fforce-recomp
 
 library:
   source-dirs: src
@@ -61,9 +72,9 @@ executables:
     - -rtsopts
     - -with-rtsopts=-N
     - -O2
-    - -fprof-auto
-    - -fprof-cafs
-    - -fforce-recomp
+    # - -fprof-auto
+    # - -fprof-cafs
+    # - -fforce-recomp
     dependencies:
     - aoc2022
 

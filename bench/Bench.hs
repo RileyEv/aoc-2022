@@ -2,7 +2,15 @@ import qualified Day1                           ( reader
                                                 , task1
                                                 , task2
                                                 )
+import qualified Day19                          ( reader
+                                                , task1
+                                                , task2
+                                                )
 import qualified Day2                           ( reader
+                                                , task1
+                                                , task2
+                                                )
+import qualified Day20                          ( reader
                                                 , task1
                                                 , task2
                                                 )
@@ -129,5 +137,19 @@ main = defaultMain
             $ nfIO (runTaskLines "inputs/day9.txt" Day9.reader Day9.task1)
         , bench "task2"
             $ nfIO (runTaskLines "inputs/day9.txt" Day9.reader Day9.task2)
+        ]
+    , bgroup
+        "day19"
+        [ bench "task1"
+            $ nfIO (runTask "inputs/day19.txt" Day19.reader Day19.task1)
+        , bench "task2"
+            $ nfIO (runTask "inputs/day19.txt" Day19.reader Day19.task2)
+        ]
+    , bgroup
+        "day20"
+        [ bench "task1"
+            $ nfIO (runTaskLines "inputs/day20.txt" Day20.reader Day20.task1)
+        , bench "task2"
+            $ nfIO (runTaskLines "inputs/day20.txt" Day20.reader Day20.task2)
         ]
     ]

@@ -33,7 +33,11 @@ library
       Day13
       Day14
       Day142
+      Day15
+      Day18
+      Day19
       Day2
+      Day20
       Day3
       Day4
       Day5
@@ -48,18 +52,29 @@ library
       src
   default-extensions:
       TemplateHaskell
-  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -O2 -fprof-auto -fprof-cafs -fforce-recomp
+      GADTs
+      TypeFamilies
+      TypeOperators
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -O2
   build-depends:
       Unique
     , array
+    , attoparsec
     , base >=4.7 && <5
     , containers
     , extra
+    , ghc-typelits-natnormalise
+    , hashable
+    , holmes
     , megaparsec
+    , mtl
     , parsec
     , split
     , template-haskell
+    , text
+    , unordered-containers
     , vector
+    , vector-algorithms
   default-language: Haskell2010
 
 executable aoc2022-exe
@@ -70,19 +85,30 @@ executable aoc2022-exe
       app
   default-extensions:
       TemplateHaskell
-  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -O2 -fprof-auto -fprof-cafs -fforce-recomp -threaded -rtsopts -with-rtsopts=-N -O2 -fprof-auto -fprof-cafs -fforce-recomp
+      GADTs
+      TypeFamilies
+      TypeOperators
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -O2 -threaded -rtsopts -with-rtsopts=-N -O2
   build-depends:
       Unique
     , aoc2022
     , array
+    , attoparsec
     , base >=4.7 && <5
     , containers
     , extra
+    , ghc-typelits-natnormalise
+    , hashable
+    , holmes
     , megaparsec
+    , mtl
     , parsec
     , split
     , template-haskell
+    , text
+    , unordered-containers
     , vector
+    , vector-algorithms
   default-language: Haskell2010
 
 test-suite aoc2022-test
@@ -94,7 +120,11 @@ test-suite aoc2022-test
       Day12Tests
       Day13Tests
       Day14Tests
+      Day15Tests
+      Day18Tests
+      Day19Tests
       Day1Tests
+      Day20Tests
       Day2Tests
       Day3Tests
       Day4Tests
@@ -109,22 +139,33 @@ test-suite aoc2022-test
       test
   default-extensions:
       TemplateHaskell
-  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -O2 -fprof-auto -fprof-cafs -fforce-recomp -threaded -rtsopts -with-rtsopts=-N
+      GADTs
+      TypeFamilies
+      TypeOperators
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -O2 -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       HUnit
     , Unique
     , aoc2022
     , array
+    , attoparsec
     , base >=4.7 && <5
     , containers
     , extra
+    , ghc-typelits-natnormalise
+    , hashable
+    , holmes
     , megaparsec
+    , mtl
     , parsec
     , split
     , tasty
     , tasty-hunit
     , template-haskell
+    , text
+    , unordered-containers
     , vector
+    , vector-algorithms
   default-language: Haskell2010
 
 benchmark aoc2022-bench
@@ -136,18 +177,29 @@ benchmark aoc2022-bench
       bench
   default-extensions:
       TemplateHaskell
-  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -O2 -fprof-auto -fprof-cafs -fforce-recomp -threaded -rtsopts -with-rtsopts=-N -O2
+      GADTs
+      TypeFamilies
+      TypeOperators
+  ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints -O2 -threaded -rtsopts -with-rtsopts=-N -O2
   build-depends:
       Unique
     , aoc2022
     , array
+    , attoparsec
     , base >=4.7 && <5
     , containers
     , criterion
     , extra
+    , ghc-typelits-natnormalise
+    , hashable
+    , holmes
     , megaparsec
+    , mtl
     , parsec
     , split
     , template-haskell
+    , text
+    , unordered-containers
     , vector
+    , vector-algorithms
   default-language: Haskell2010
